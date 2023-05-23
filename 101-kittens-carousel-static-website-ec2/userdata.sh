@@ -11,3 +11,4 @@ wget https://raw.githubusercontent.com/forza-dc/my-repository/main/101-kittens-c
 
 
 systemctl start httpd
+systemctl enable httpd
