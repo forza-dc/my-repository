@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-def lcm(a,b):
-    greater = max(a,b)
+def lcm(a, b):
+    greater = max(a, b)
 
     while True:
         if greater % a == 0 and greater % b == 0:
@@ -16,11 +16,7 @@ def lcm(a,b):
 def index():
     num1 = 10
     num2 = 20
-    return render_template('index.html', num1=num1 , num2=num2)
-
-@app.route('/')
-def index():
-    return render_template('index.html', num1=10, num2=20)
+    return render_template('index.html', num1=num1, num2=num2)
 
 @app.route('/calc', methods=['GET', 'POST'])
 def calculate_lcm():
@@ -31,6 +27,6 @@ def calculate_lcm():
         return render_template('result.html', result=result)
     else:
         return 'Since this is a GET request, LCM has not been calculated'
-    
+
 if __name__ == '__main__':
     app.run(debug=True)

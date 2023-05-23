@@ -2,13 +2,15 @@ from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
+@app.route('/')
 def greet():
     user = request.args.get('user')
     if user:
         return render_template('greet.html', user=user)
     else:
         return "Please provide a user parameter in the URL."
-    
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -19,7 +21,7 @@ def login():
             return render_template('login.html', message='Invalid username or password.')
     else:
         return render_template('login.html')
-    
+
 @app.route('/secure')
 def secure():
     return render_template('secure.html')
